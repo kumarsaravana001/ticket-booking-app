@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:ticket_booking_app/screens/search_screen.dart';
 
-import 'home_screen.dart';
+import 'homeScreen/home_screen.dart';
+
+
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({super.key});
@@ -12,11 +14,11 @@ class BottomNavBar extends StatefulWidget {
 }
 
 class _BottomNavBarState extends State<BottomNavBar> {
-  int _selectedIndex = 3;
+  int _selectedIndex = 0;
 
   static final _widgetOptions = [
-    HomeScreen(),
-    SearchScreen(),
+    const HomeScreen(),
+    const SearchScreen(),
     const Text("Ticket"),
     const Text("Profile"),
   ];
@@ -30,10 +32,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("My Ticket App"),
-      ),
-      body: Center(child: _widgetOptions[_selectedIndex]),
+      body: SafeArea(child: Center(child: _widgetOptions[_selectedIndex])),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         currentIndex: _selectedIndex,
